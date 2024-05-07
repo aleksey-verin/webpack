@@ -1,9 +1,38 @@
-import path from 'path';
 import webpack from 'webpack';
+import path from 'path';
+import fs from 'fs';
 import HtmlBundlerPlugin from 'html-bundler-webpack-plugin';
+import ImageMinimizerPlugin from "image-minimizer-webpack-plugin"
 import 'webpack-dev-server';
 // const path = require('path');
 // const HtmlBundlerPlugin = require('html-bundler-webpack-plugin');
+
+// import path from 'path';
+
+// Определение типа для возвращаемого объекта
+interface EntryPoints {
+    [key: string]: string;
+}
+
+function generateEntryPoints(): EntryPoints {
+    const pagesDir = path.join(__dirname, 'src/pages');
+    const dirs = fs.readdirSync(pagesDir, { withFileTypes: true });
+
+    const entryPoints: EntryPoints = {};
+
+    // Перебор всех каталогов в директории страниц
+    dirs.forEach(dir => {
+        if (dir.isDirectory()) {
+            const indexPath = path.join(pagesDir, dir.name, 'index.html');
+            if (fs.existsSync(indexPath)) {
+                const key = dir.name === 'home' ? 'index' : `${dir.name}/index`;
+                entryPoints[key] = './' + path.relative(__dirname, indexPath);
+            }
+        }
+    });
+
+    return entryPoints;
+}
 
 const isProd = !process.argv.find((str) => str.includes('development'));
 
@@ -14,18 +43,24 @@ const config: webpack.Configuration = {
     stats: 'normal', // 'verbose' | 'minimal'
   
     output: {
-      path: path.join(__dirname, 'dist/'),
+      path: path.resolve(__dirname, 'dist'),
       clean: true
     },
     resolve: {
       extensions: ['.ts', '.js'],
+      preferAbsolute: true,
+      alias: {
+        '@': path.resolve(__dirname, 'src'),
+      }
     },
-  
-    entry: {
-      // define HTML templates here
-      index: './src/pages/home/index.html',  // => dist/index.html
-      'about/index': './src/pages/about/index.html', // => dist/about/index.html
-    },
+    entry: generateEntryPoints(),
+    // entry: {
+    //   // define HTML templates here
+    //   index: './src/pages/home/index.html',  // => dist/index.html
+    //   'about/index': './src/pages/about/index.html', // => dist/about/index.html
+    //   'buy/index': './src/pages/buy/index.html', // => dist/about/index.html
+
+    // },
     
     plugins: [
       new HtmlBundlerPlugin({
@@ -39,7 +74,7 @@ const config: webpack.Configuration = {
         },
         minify: isProd ? true : 'auto',
         loaderOptions: {
-          root: path.join(__dirname, 'src'),
+          root: __dirname,
           sources: [
             {
               tag: 'meta',
@@ -79,6 +114,40 @@ const config: webpack.Configuration = {
             filename: 'assets/img/[name].[hash:8][ext]',
           },
         },
+      ],
+    },
+    optimization: {
+      minimizer: [
+        "...",
+        new ImageMinimizerPlugin({
+          minimizer: {
+            implementation: ImageMinimizerPlugin.sharpMinify,
+            options: {
+              encodeOptions: {
+                jpeg: {
+                  // https://sharp.pixelplumbing.com/api-output#jpeg
+                  quality: 100,
+                },
+                webp: {
+                  // https://sharp.pixelplumbing.com/api-output#webp
+                  lossless: true,
+                },
+                avif: {
+                  // https://sharp.pixelplumbing.com/api-output#avif
+                  lossless: true,
+                },
+  
+                // png by default sets the quality to 100%, which is same as lossless
+                // https://sharp.pixelplumbing.com/api-output#png
+                png: {},
+  
+                // gif does not support lossless compression at all
+                // https://sharp.pixelplumbing.com/api-output#gif
+                gif: {},
+              },
+            },
+          },
+        }),
       ],
     },
   

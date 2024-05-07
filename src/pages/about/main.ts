@@ -1,4 +1,4 @@
-import '../shared/modules/module'
+import '@/shared/modules/module'
 import './modules/module1'
 import './modules/module2'
 
