@@ -1,7 +1,14 @@
 const path = require('path');
 const HtmlBundlerPlugin = require('html-bundler-webpack-plugin');
 
+const isProd = !process.argv.find((str) => str.includes('development'));
+
 module.exports = {
+  mode: isProd ? 'production' : 'development',
+  devtool: isProd ? 'source-map' : 'inline-source-map', 
+  stats: 'normal', // 'verbose' | 'minimal'
+
+
   output: {
     path: path.join(__dirname, 'dist/'),
     clean: true
@@ -15,7 +22,7 @@ module.exports = {
     index: './src/pages/home/index.html',  // => dist/index.html
     'about/index': './src/pages/about/index.html', // => dist/about/index.html
   },
-
+  
   plugins: [
     new HtmlBundlerPlugin({
       js: {
@@ -26,6 +33,7 @@ module.exports = {
         // output filename of extracted CSS from source style loaded in HTML via `<link>` tag
         filename: 'assets/css/[name].[contenthash:8].css',
       },
+      minify: isProd ? 'true' : 'auto',
       loaderOptions: {
         root: path.join(__dirname, 'src'),
         sources: [
@@ -72,6 +80,8 @@ module.exports = {
 
   // enable HMR with live reload
   devServer: {
+    open: true,
+    compress: true,
     static: {
       directory: path.join(__dirname, 'dist'),
     },
