@@ -1,13 +1,24 @@
 {
   "compilerOptions": {
     "outDir": "./dist/",
-    "sourceMap": true,
     "noImplicitAny": true,
-    "module": "es6",
+    "module": "ESNext",
     "target": "es5",
     "allowJs": true,
-    "moduleResolution": "node"
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "isolatedModules": true,
+    "paths": {
+      "@/*": ["./src/*"]
   },
+  },
+  "ts-node": {
+    "compilerOptions": {
+        "module": "CommonJS"
+    }
+},
   "include": [
     "./src/**/*"
   ]
