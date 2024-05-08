@@ -1,38 +1,8 @@
-import webpack from 'webpack'
+import webpack, { PathData } from 'webpack'
 import path from 'path'
-import fs from 'fs'
 import HtmlBundlerPlugin from 'html-bundler-webpack-plugin'
 import ImageMinimizerPlugin from 'image-minimizer-webpack-plugin'
 import 'webpack-dev-server'
-// const path = require('path');
-// const HtmlBundlerPlugin = require('html-bundler-webpack-plugin');
-
-// import path from 'path';
-
-// Определение типа для возвращаемого объекта
-interface EntryPoints {
-  [key: string]: string
-}
-
-function generateEntryPoints(): EntryPoints {
-  const pagesDir = path.join(__dirname, 'src/pages')
-  const dirs = fs.readdirSync(pagesDir, { withFileTypes: true })
-
-  const entryPoints: EntryPoints = {}
-
-  // Перебор всех каталогов в директории страниц
-  dirs.forEach((dir) => {
-    if (dir.isDirectory()) {
-      const indexPath = path.join(pagesDir, dir.name, 'index.html')
-      if (fs.existsSync(indexPath)) {
-        const key = dir.name === 'home' ? 'index' : `${dir.name}/index`
-        entryPoints[key] = './' + path.relative(__dirname, indexPath)
-      }
-    }
-  })
-
-  return entryPoints
-}
 
 const isProd = !process.argv.find((str) => str.includes('development'))
 
@@ -52,17 +22,13 @@ const config: webpack.Configuration = {
       '@': path.resolve(__dirname, 'src'),
     },
   },
-  entry: generateEntryPoints(),
-  // entry: {
-  //   // define HTML templates here
-  //   index: './src/pages/home/index.html',  // => dist/index.html
-  //   'about/index': './src/pages/about/index.html', // => dist/about/index.html
-  //   'buy/index': './src/pages/buy/index.html', // => dist/about/index.html
-
-  // },
 
   plugins: [
     new HtmlBundlerPlugin({
+      entry: 'src/pages', // <= the path to templates
+      entryFilter: [/index\.html$/], // <= process only matched template files to exclude partials
+      filename: ({ chunk }: PathData) =>
+        chunk?.name === 'home/index' ? 'index.html' : '[name].html',
       js: {
         // output filename of extracted JS from source script loaded in HTML via `<script>` tag
         filename: 'assets/js/[name].[contenthash:8].js',
@@ -71,7 +37,7 @@ const config: webpack.Configuration = {
         // output filename of extracted CSS from source style loaded in HTML via `<link>` tag
         filename: 'assets/css/[name].[contenthash:8].css',
       },
-      minify: isProd ? true : 'auto',
+      minify: 'auto',
       loaderOptions: {
         root: __dirname,
         sources: [
@@ -97,15 +63,9 @@ const config: webpack.Configuration = {
   module: {
     rules: [
       {
-        test: /\.html$/,
-        loader: HtmlBundlerPlugin.loader, // HTML loader
-      },
-      // styles
-      {
         test: /\.(css|sass|scss)$/,
         use: ['css-loader', 'sass-loader'],
       },
-      // images
       {
         test: /\.(png|jpe?g|svg|ico)/,
         type: 'asset/resource',
