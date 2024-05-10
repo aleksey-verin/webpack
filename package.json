@@ -11,10 +11,11 @@
     "lint:check": "eslint --cache .",
     "lint:fix": "eslint --cache . --fix",
     "format:check": "prettier --check \"./src\"",
-    "format:fix": "prettier --write \"./src\""
+    "format:fix": "prettier --write \"./src\"",
+    "prepare": "husky"
   },
   "keywords": [],
-  "author": "",
+  "author": "aleksey verin",
   "license": "ISC",
   "devDependencies": {
     "@types/node": "^20.12.10",
@@ -32,6 +33,7 @@
     "html-webpack-plugin": "^5.6.0",
     "husky": "^9.0.11",
     "image-minimizer-webpack-plugin": "^4.0.0",
+    "lint-staged": "^15.2.2",
     "mini-css-extract-plugin": "^2.9.0",
     "prettier": "^3.2.5",
     "sass": "^1.76.0",
