@@ -49,10 +49,10 @@
   },
   "lint-staged": {
     "*.{html,scss,css,ts,js,json}": [
-      "prettier --write"
+      "prettier --list-different"
     ],
     "*.{ts,js}": [
-      "npm run lint:fix"
+      "eslint"
     ]
   }
 }
