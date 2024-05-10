@@ -12,7 +12,7 @@
     "lint:fix": "eslint . --fix --color",
     "format:check": "prettier --check \"./src\"",
     "format:fix": "prettier --write \"./src\"",
-    "prepare": "husky install"
+    "prepare": "husky"
   },
   "keywords": [],
   "author": "aleksey verin",
@@ -49,7 +49,7 @@
   },
   "lint-staged": {
     "*.{html,scss,css,ts,js,json}": [
-      "prettier --list-different"
+      "prettier --write"
     ],
     "*.{ts,js}": [
       "npm run lint:check"
