@@ -1,0 +1,161 @@
+// @mixin retina($density: 2) {
+//   @media only screen and (min-device-pixel-ratio: $density),
+//     only screen and (min-resolution: 192dpi),
+//     only screen and (min-resolution: 2dppx) {
+//     @content;
+//   }
+// }
+
+@mixin list-reset {
+  margin: 0;
+  padding: 0;
+
+  list-style: none;
+}
+
+// @mixin button-reset {
+//   margin: 0;
+//   padding: 0;
+
+//   cursor: pointer;
+
+//   border: none;
+//   outline: none;
+//   background: none;
+
+//   &:focus {
+//     outline: none;
+//   }
+// }
+
+@mixin top-border {
+  border-top: 1rem solid transparent;
+  border-image: linear-gradient(
+    to right,
+    transparent 5%,
+    $grey 5%,
+    $grey 95%,
+    transparent 95%
+  );
+  border-image-slice: 1;
+  @media screen and (min-width: $sm) {
+    border-top: 1.5rem solid transparent;
+  }
+}
+
+@mixin top-border-none {
+  border-top: none;
+}
+
+@mixin bottom-border {
+  border-bottom: 1rem solid transparent;
+  border-image: linear-gradient(
+    to right,
+    transparent 5%,
+    $grey 5%,
+    $grey 95%,
+    transparent 95%
+  );
+  border-image-slice: 1;
+  @media screen and (min-width: $sm) {
+    border-bottom: 1.5rem solid transparent;
+  }
+}
+
+@mixin left-border {
+  &::before {
+        position: absolute;
+        content: "";
+        width: 1rem;
+        background-color: $grey;
+        left: 0;
+        top: 6rem;
+        bottom: 6rem;
+      }
+      @media screen and (min-width: $sm) {
+        &::before {
+          width: 1.5rem;
+          top: 20rem;
+          bottom: 20rem;
+        }
+      }
+  
+}
+@mixin left-border-none {
+  &::before {
+        content: none;
+      }
+}
+
+@mixin reg-to-bold {
+  text-shadow:
+  -0.5rem 0rem 0rem $black,
+  // -0.5rem 0.5rem 0rem $black,
+  -0.5rem -0.5rem 0rem $black,
+  0rem 0rem 0rem $black,
+  // 0rem 0.5rem 0rem $black,
+  0rem -0.5rem 0rem $black,
+  0.5rem 0rem 0rem $black,
+  // 0.5rem 0.5rem 0rem $black,
+  0.5rem -0.5rem 0rem $black;
+  letter-spacing: 1;
+}
+
+@mixin bottom-top-border-white {
+  border-top: 1rem solid transparent;
+  border-bottom: 1rem solid transparent;
+  border-image: linear-gradient(
+    to right,
+    transparent 9%,
+    $light-grey 9%,
+    $light-grey 91%,
+    transparent 91%
+  );
+  border-image-slice: 1;
+  @media screen and (min-width: $sm) {
+    border-top: 1.5rem solid transparent;
+    border-bottom: 1.5rem solid transparent;
+    border-image: linear-gradient(
+      to right,
+      transparent 5%,
+      $light-grey 5%,
+      $light-grey 95%,
+      transparent 95%
+    );
+    border-image-slice: 1;
+  }
+}
+
+@mixin left-border-white {
+  &::before {
+        position: absolute;
+        content: "";
+        width: 1rem;
+        background-color: $light-grey;
+        left: 0;
+        top: 6rem;
+        bottom: 6rem;
+      }
+      @media screen and (min-width: $sm) {
+        &::before {
+          width: 1.5rem;
+          top: 19.5rem;
+          bottom: 19.5rem;
+        }
+      }
+  
+}
+
+@mixin reg-to-bold-white {
+  text-shadow:
+  -0.5rem 0rem 0rem $light-grey,
+  // -0.5rem 0.5rem 0rem $light-grey,
+  -0.5rem -0.5rem 0rem $light-grey,
+  0rem 0rem 0rem $light-grey,
+  // 0rem 0.5rem 0rem $light-grey,
+  0rem -0.5rem 0rem $light-grey,
+  0.5rem 0rem 0rem $light-grey,
+  // 0.5rem 0.5rem 0rem $light-grey,
+  0.5rem -0.5rem 0rem $light-grey;
+  letter-spacing: 1;
+}

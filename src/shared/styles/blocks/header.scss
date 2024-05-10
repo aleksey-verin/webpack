@@ -1,0 +1,35 @@
+
+
+.header {
+  width: 100%;
+  background-color: $dark-purple;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 30rem;
+  height: 60rem;
+}
+.header__logo {
+  font-size: 32rem;
+  line-height: 32rem;
+  font-weight: bold;
+  color: $white;
+  text-shadow: 1rem 1rem 5rem $white;
+  text-transform: uppercase;
+  letter-spacing: -1.5rem;
+}
+.header__menu {
+  display: flex;
+  gap: 30rem;
+}
+.link {
+  color: $white;
+  font-size: 24rem;
+  transition: color $ease;
+  &:hover {
+    color: $black;
+  }
+  &.active {
+    text-decoration: underline;
+  }
+}

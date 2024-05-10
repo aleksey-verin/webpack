@@ -4,8 +4,4 @@
 @import '/src/shared/styles/blocks/header.scss';
 
 // local components
-
-
-body {
-  background-color: lightblue;
-}
+@import './styles/section.scss';

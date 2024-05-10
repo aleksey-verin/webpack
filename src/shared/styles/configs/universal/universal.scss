@@ -1,0 +1,238 @@
+.headline-1 {
+  font-size: 36rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 120%;
+  text-transform: uppercase;
+}
+
+.headline-2 {
+  font-size: 36rem;
+  font-style: normal;
+  font-weight: 900;
+  line-height: 120%;
+  text-transform: uppercase;
+}
+
+.headline-3 {
+  font-size: 34rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 120%;
+  text-transform: uppercase;
+}
+
+.headline-4 {
+  font-size: 34rem;
+  font-style: normal;
+  font-weight: 900;
+  line-height: 120%;
+  text-transform: uppercase;
+}
+
+.headline-5 {
+  font-size: 24rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-transform: uppercase;
+}
+
+.headline-6 {
+  font-size: 24rem;
+  font-style: normal;
+  font-weight: 900;
+  line-height: normal;
+  text-transform: uppercase;
+}
+
+.headline-7 {
+  font-size: 14rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-transform: uppercase;
+}
+
+.headline-8 {
+  font-size: 14rem;
+  font-style: normal;
+  font-weight: 900;
+  line-height: normal;
+  text-transform: uppercase;
+}
+
+.headline-9 {
+  font-size: 12rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-transform: uppercase;
+}
+
+.headline-10 {
+  font-size: 12rem;
+  font-style: normal;
+  font-weight: 900;
+  line-height: normal;
+  text-transform: uppercase;
+}
+
+.text-1 {
+  font-size: 14rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.text-2 {
+  font-size: 12rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-transform: uppercase;
+}
+
+.text-3 {
+  font-size: 12rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.btn {
+  padding-left: 10rem;
+  padding-right: 10rem;
+
+  width: 100%;
+  min-height: 59rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+
+  font-size: 18rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+
+  border-radius: 8rem;
+
+  &.primary {
+    background-color: $pink;
+    color: $light-grey;
+
+    &:hover {
+      background-color: $pink;
+    }
+    &:active {
+      background-color: $pink;
+    }
+  }
+
+  &.secondary {
+    background-color: $light-grey;
+    color: $black;
+    &:hover {
+      background-color: $light-grey;
+      color: $black;
+    }
+    &:active {
+      background-color: $light-grey;
+      color: $black;
+    }
+  }
+
+  &.disabled {
+    background-color: $white;
+    color: $grey;
+    cursor: auto;
+    &:hover {
+      background-color: $white;
+      color: $grey;
+    }
+    &:active {
+      background-color: $white;
+      color: $grey;
+    }
+  }
+}
+
+.container {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0 15rem 0 16rem;
+}
+
+.title-wrapper {
+  padding: 0 25rem 0 53rem;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+
+@media screen and (min-width: $sm) {
+  .headline-1 {
+    font-size: 84rem;
+  }
+
+  .headline-2 {
+    font-size: 84rem;
+  }
+
+  .headline-3 {
+    font-size: 60rem;
+  }
+
+  .headline-4 {
+    font-size: 60rem;
+  }
+
+  .headline-5 {
+    font-size: 42rem;
+  }
+
+  .headline-6 {
+    font-size: 42rem;
+  }
+
+  .headline-7 {
+    font-size: 24rem;
+  }
+
+  .headline-8 {
+    font-size: 24rem;
+  }
+
+  .headline-9 {
+    font-size: 20rem;
+  }
+
+  .headline-10 {
+    font-size: 20rem;
+  }
+
+  .text-1 {
+    font-size: 20rem;
+  }
+
+  .text-2 {
+    font-size: 18rem;
+  }
+
+  .text-3 {
+    font-size: 14rem;
+  }
+}
