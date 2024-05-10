@@ -1,1 +1,1 @@
-console.log('shared module');
+console.log('shared module')

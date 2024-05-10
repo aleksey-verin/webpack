@@ -1,7 +1,8 @@
-import webpack, { PathData } from 'webpack'
-import path from 'path'
 import HtmlBundlerPlugin from 'html-bundler-webpack-plugin'
 import ImageMinimizerPlugin from 'image-minimizer-webpack-plugin'
+import path from 'path'
+import webpack, { PathData } from 'webpack'
+
 import 'webpack-dev-server'
 
 export type BuildMode = 'production' | 'development'
@@ -12,10 +13,9 @@ export interface BuildEnv {
 }
 
 export default (env: BuildEnv) => {
-
-  const mode = env?.mode || 'development';
-  const PORT = env?.port || 3000;
-  const isDev = mode === 'development';
+  const mode = env?.mode || 'development'
+  const PORT = env?.port || 3000
+  const isDev = mode === 'development'
 
   const config: webpack.Configuration = {
     mode,
@@ -60,7 +60,10 @@ export default (env: BuildEnv) => {
               filter: ({ attributes }) => {
                 const attrName = 'property'
                 const attrValues = ['og:image', 'og:video'] // allowed values of the property
-                if (!attributes[attrName] || attrValues.indexOf(attributes[attrName]) < 0) {
+                if (
+                  !attributes[attrName] ||
+                  attrValues.indexOf(attributes[attrName]) < 0
+                ) {
                   return false // return false to disable processing
                 }
                 // return true or undefined to enable processing

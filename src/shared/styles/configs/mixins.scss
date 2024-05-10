@@ -64,40 +64,39 @@
 
 @mixin left-border {
   &::before {
-        position: absolute;
-        content: "";
-        width: 1rem;
-        background-color: $grey;
-        left: 0;
-        top: 6rem;
-        bottom: 6rem;
-      }
-      @media screen and (min-width: $sm) {
-        &::before {
-          width: 1.5rem;
-          top: 20rem;
-          bottom: 20rem;
-        }
-      }
-  
+    position: absolute;
+    content: '';
+    width: 1rem;
+    background-color: $grey;
+    left: 0;
+    top: 6rem;
+    bottom: 6rem;
+  }
+  @media screen and (min-width: $sm) {
+    &::before {
+      width: 1.5rem;
+      top: 20rem;
+      bottom: 20rem;
+    }
+  }
 }
 @mixin left-border-none {
   &::before {
-        content: none;
-      }
+    content: none;
+  }
 }
 
 @mixin reg-to-bold {
   text-shadow:
-  -0.5rem 0rem 0rem $black,
-  // -0.5rem 0.5rem 0rem $black,
-  -0.5rem -0.5rem 0rem $black,
-  0rem 0rem 0rem $black,
-  // 0rem 0.5rem 0rem $black,
-  0rem -0.5rem 0rem $black,
-  0.5rem 0rem 0rem $black,
-  // 0.5rem 0.5rem 0rem $black,
-  0.5rem -0.5rem 0rem $black;
+    -0.5rem 0rem 0rem $black,
+    // -0.5rem 0.5rem 0rem $black,
+    -0.5rem -0.5rem 0rem $black,
+    0rem 0rem 0rem $black,
+    // 0rem 0.5rem 0rem $black,
+    0rem -0.5rem 0rem $black,
+    0.5rem 0rem 0rem $black,
+    // 0.5rem 0.5rem 0rem $black,
+    0.5rem -0.5rem 0rem $black;
   letter-spacing: 1;
 }
 
@@ -128,34 +127,33 @@
 
 @mixin left-border-white {
   &::before {
-        position: absolute;
-        content: "";
-        width: 1rem;
-        background-color: $light-grey;
-        left: 0;
-        top: 6rem;
-        bottom: 6rem;
-      }
-      @media screen and (min-width: $sm) {
-        &::before {
-          width: 1.5rem;
-          top: 19.5rem;
-          bottom: 19.5rem;
-        }
-      }
-  
+    position: absolute;
+    content: '';
+    width: 1rem;
+    background-color: $light-grey;
+    left: 0;
+    top: 6rem;
+    bottom: 6rem;
+  }
+  @media screen and (min-width: $sm) {
+    &::before {
+      width: 1.5rem;
+      top: 19.5rem;
+      bottom: 19.5rem;
+    }
+  }
 }
 
 @mixin reg-to-bold-white {
   text-shadow:
-  -0.5rem 0rem 0rem $light-grey,
-  // -0.5rem 0.5rem 0rem $light-grey,
-  -0.5rem -0.5rem 0rem $light-grey,
-  0rem 0rem 0rem $light-grey,
-  // 0rem 0.5rem 0rem $light-grey,
-  0rem -0.5rem 0rem $light-grey,
-  0.5rem 0rem 0rem $light-grey,
-  // 0.5rem 0.5rem 0rem $light-grey,
-  0.5rem -0.5rem 0rem $light-grey;
+    -0.5rem 0rem 0rem $light-grey,
+    // -0.5rem 0.5rem 0rem $light-grey,
+    -0.5rem -0.5rem 0rem $light-grey,
+    0rem 0rem 0rem $light-grey,
+    // 0rem 0.5rem 0rem $light-grey,
+    0rem -0.5rem 0rem $light-grey,
+    0.5rem 0rem 0rem $light-grey,
+    // 0.5rem 0.5rem 0rem $light-grey,
+    0.5rem -0.5rem 0rem $light-grey;
   letter-spacing: 1;
 }
