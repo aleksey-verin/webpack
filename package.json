@@ -12,7 +12,7 @@
     "lint:fix": "eslint --cache . --fix --color",
     "format:check": "prettier --check \"./src\"",
     "format:fix": "prettier --write \"./src\"",
-    "prepare": "husky"
+    "prepare": "husky install"
   },
   "keywords": [],
   "author": "aleksey verin",
