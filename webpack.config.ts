@@ -55,7 +55,7 @@ export default (env: BuildEnv) => {
             {
               tag: 'meta',
               attributes: ['content'],
-              // allow to handlen an image in the 'content' attribute of the 'meta' tag
+              // allow to handle an image in the 'content' attribute of the 'meta' tag
               // when the 'property' attribute contains one of: 'og:image', 'og:video'
               filter: ({ attributes }) => {
                 const attrName = 'property'
@@ -126,7 +126,7 @@ export default (env: BuildEnv) => {
     // enable HMR with live reload
     devServer: {
       port: PORT,
-      open: true,
+      open: false,
       compress: true,
       static: {
         directory: path.join(__dirname, 'dist'),
@@ -142,5 +142,3 @@ export default (env: BuildEnv) => {
 
   return config
 }
-
-// export default config
