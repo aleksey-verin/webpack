@@ -8,8 +8,8 @@
     "build:preprod": "webpack --env mode=development",
     "build:prod": "webpack --env mode=production --progress",
     "ts:check": "tsc --noEmit",
-    "lint:check": "eslint --cache .",
-    "lint:fix": "eslint --cache . --fix --color",
+    "lint:check": "eslint .",
+    "lint:fix": "eslint . --fix --color",
     "format:check": "prettier --check \"./src\"",
     "format:fix": "prettier --write \"./src\"",
     "prepare": "husky install"
@@ -52,7 +52,7 @@
       "prettier --list-different"
     ],
     "*.{ts,js}": [
-      "eslint"
+      "npm run lint:check"
     ]
   }
 }
